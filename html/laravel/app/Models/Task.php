@@ -29,6 +29,7 @@ class Task extends Model
         'task_category_id',
         'due_date',
         'task_resolution_id',
+        'text',
     ];
 
     /**
