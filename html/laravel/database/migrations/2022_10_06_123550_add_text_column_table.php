@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTypeToTasksTable extends Migration
+class AddTextColumnTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,6 @@ class AddTypeToTasksTable extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->string('text', '1000')->nullable();
-            $table->softDeletes();
         });
     }
 
