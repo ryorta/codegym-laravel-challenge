@@ -81,6 +81,7 @@ class TaskController extends Controller
         $task_statuses = TaskStatus::all();
         $task_categories = TaskCategory::all();
         $assigners = User::all();
+        $text = Task::all();
 
         return view('tasks.create', [
             'project' => $project,
@@ -88,6 +89,7 @@ class TaskController extends Controller
             'task_statuses' => $task_statuses,
             'task_categories' => $task_categories,
             'assigners' => $assigners,
+            'text' => $text,
         ]);
     }
 
@@ -107,6 +109,7 @@ class TaskController extends Controller
             'task_category_id' => 'nullable|integer',
             'task_resolution_id' => 'nullable|integer',
             'due_date' => 'nullable|date',
+            'text' => 'nullable|string|max:1000',
         ]);
 
         if (Task::create([
@@ -118,6 +121,7 @@ class TaskController extends Controller
             'task_category_id' => $request->task_category_id,
             'due_date' => $request->due_date,
             'created_user_id' => $request->user()->id,
+            'text' => $request->text,
         ])) {
             $flash = ['success' => __('Task created successfully.')];
         } else {
@@ -151,6 +155,7 @@ class TaskController extends Controller
         $task_statuses = TaskStatus::all();
         $task_categories = TaskCategory::all();
         $assigners = User::all();
+        $text = Task::all();
 
         return view('tasks.edit', [
             'project' => $project,
@@ -159,6 +164,7 @@ class TaskController extends Controller
             'task_categories' => $task_categories,
             'assigners' => $assigners,
             'task' => $task,
+            'text' => $text,
         ]);
     }
 
@@ -179,6 +185,7 @@ class TaskController extends Controller
             'task_category_id' => 'nullable|integer',
             'task_resolution_id' => 'nullable|integer',
             'due_date' => 'nullable|date',
+            'text' => 'nullable|string|max:1000',
         ]);
 
         if ($task->update($request->all())) {

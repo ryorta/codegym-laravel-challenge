@@ -13,7 +13,7 @@
             {{ __('Project Create') }}
         </x-side-menu-link>
     </x-slot>
-
+    
     <div>
         <div class="mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
